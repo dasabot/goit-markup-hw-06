@@ -82,7 +82,7 @@ img {
     background-color: var(--white);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    padding: 40px 14px;
+    padding: 40px;
     position: relative;
     opacity: 1;
     display: flex;
@@ -145,6 +145,7 @@ img {
     position: absolute;
     top: 8px;
     right: 8px;
+    padding: 0;
 
     &:hover {
         .close-icon {
@@ -194,6 +195,22 @@ img {
         letter-spacing: .01em;
         transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
         outline: transparent;
+
+        &:hover {
+            border: 1px solid var(--blue);
+
+            .modal-form__input-icon {
+                fill: var(--blue);
+            }
+        }
+
+        &:focus {
+            border: 1px solid var(--blue);
+        }
+
+        &:focus-within+.modal-form__input-icon {
+            fill: var(--blue);
+        }
     }
 
     &__input-wrap {
@@ -240,6 +257,7 @@ img {
         letter-spacing: .01em;
         transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
         outline: transparent;
+        resize: none;
 
         &::placeholder {
             font-size: 12px;
@@ -252,7 +270,7 @@ img {
             border: 1px solid var(--blue);
         }
 
-        &:hover {
+        &:focus {
             border: 1px solid var(--blue);
         }
     }
@@ -267,6 +285,7 @@ img {
         line-height: 1.7;
         letter-spacing: .03em;
         color: var(--gray);
+        user-select: none;
 
         &-link {
             color: var(--blue);
@@ -304,7 +323,10 @@ img {
 .hidden {
     position: absolute;
     white-space: nowrap;
-    visibility: hidden;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
 }
 
 .container {
@@ -418,8 +440,6 @@ img {
                     right: 0;
                 }
             }
-
-
         }
     }
 
@@ -441,9 +461,6 @@ img {
     display: flex;
 
     &__item {
-
-
-
         &:not(:last-child) {
             margin-right: 50px;
         }
@@ -809,11 +826,8 @@ img {
         margin-right: 70px;
     }
 
-    &__social-networks {
-        margin-right: 93px;
-    }
-
     &__mailing {
+        margin-left: auto;
 
         &-container {
             display: flex;
